@@ -53,7 +53,7 @@ public class ControllerExceptionHandler {
   public ResponseEntity<StandardError> violation(DataIntegrityViolationException e, HttpServletRequest request) {
     HttpStatus status = HttpStatus.UNPROCESSABLE_ENTITY;
     StandardError err = new StandardError(Instant.now(), status.value(),
-        "O email informado já está sendo utilizado por outro usuário",
+        "Violação de integridade referencial",
         e.getMessage(), request.getRequestURI());
     return ResponseEntity.status(status).body(err);
   }
